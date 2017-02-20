@@ -51,12 +51,11 @@ public class TurnonofSystem extends javax.swing.JFrame {
         butturn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         lbloading = new javax.swing.JLabel();
-        camera = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 0, 0));
+        setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);
@@ -91,7 +90,7 @@ public class TurnonofSystem extends javax.swing.JFrame {
                 butturnActionPerformed(evt);
             }
         });
-        getContentPane().add(butturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 122, 125));
+        getContentPane().add(butturn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 122, 125));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,38 +100,12 @@ public class TurnonofSystem extends javax.swing.JFrame {
         lbloading.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
         lbloading.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/loading.gif"))); // NOI18N
         lbloading.setText("Server is activated");
-        getContentPane().add(lbloading, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 160, 350, 150));
+        getContentPane().add(lbloading, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 410, 170));
 
-        camera.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        camera.setText("Turn on Camera");
-        camera.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cameraActionPerformed(evt);
-            }
-        });
-        getContentPane().add(camera, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 340, 150, 60));
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton1.setText("Help");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setDefaultCapable(false);
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
-        jButton1.setRequestFocusEnabled(false);
-        jButton1.setRolloverEnabled(false);
-        jButton1.setVerifyInputWhenFocusTarget(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 10, 70, -1));
-
+        bg.setBackground(new java.awt.Color(51, 255, 255));
         bg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bgmanager.png"))); // NOI18N
-        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 710, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -155,9 +128,12 @@ public class TurnonofSystem extends javax.swing.JFrame {
             if (num % 2 == 0) {
                 a = 2;
                 System.out.println("Connected");
+                ImageIcon image = new ImageIcon("src/images/loading.gif");
+                int width = 350;
+                int height = 250;
+                image.setImage(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                 butturn.setIcon(new ImageIcon("src/images/turnoff.png"));
-                lbloading.setIcon(new ImageIcon("src/images/loading.gif"));
-                lbloading.setText("Server is activated");
+                lbloading.setIcon(image);
                 //tạo ra rmi registry(key)
                 //binding đối tượng từ xa
                 Naming.rebind(sg, server);
@@ -169,7 +145,7 @@ public class TurnonofSystem extends javax.swing.JFrame {
                 lbloading.setText("");
                 Naming.unbind(sg);
                 UnicastRemoteObject.unexportObject(server, true);
-                lbloading.setText("Server is off");
+                lbloading.setText("");
             }
         } catch (Exception E) {
             E.printStackTrace();
@@ -199,24 +175,6 @@ public class TurnonofSystem extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_butturnMouseExited
-
-    private void cameraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cameraActionPerformed
-        try {
-            Runtime.getRuntime().exec("Debug/CNCAPTECH_ACP1207B.exe");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }//GEN-LAST:event_cameraActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            Runtime.getRuntime().exec("hh.exe \"Help Camera.chm");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if (evt.getKeyCode() == 112) {
@@ -284,8 +242,6 @@ public class TurnonofSystem extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
     private javax.swing.JButton butturn;
-    private javax.swing.JButton camera;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lbloading;
     // End of variables declaration//GEN-END:variables
