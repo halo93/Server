@@ -1,13 +1,9 @@
 package Connections;
 
-import Connections.SplashConnect;
 
 import efiect.DisplayClose;
-import efiect.DisplayOpen;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
@@ -105,7 +101,6 @@ public class ConfigToServer extends javax.swing.JFrame implements Runnable {
         lbport = new javax.swing.JLabel();
         lblogin = new javax.swing.JLabel();
         lbletter = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -233,24 +228,6 @@ public class ConfigToServer extends javax.swing.JFrame implements Runnable {
 
         lbletter.setForeground(new java.awt.Color(255, 0, 0));
         getContentPane().add(lbletter, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 130, 20));
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Help");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setDefaultCapable(false);
-        jButton1.setFocusPainted(false);
-        jButton1.setFocusable(false);
-        jButton1.setRequestFocusEnabled(false);
-        jButton1.setRolloverEnabled(false);
-        jButton1.setVerifyInputWhenFocusTarget(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, 80, -1));
 
         bg.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/config.png"))); // NOI18N
@@ -413,22 +390,10 @@ public class ConfigToServer extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtserverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-         try {
-            Runtime.getRuntime().exec("hh.exe \"HelpConnect.chm");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-        
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
     private javax.swing.JButton btCancel;
     private javax.swing.JButton btSave;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
